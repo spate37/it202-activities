@@ -1,27 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset = "utf-8">
-  <title>avtivity_4.3</title>
+ 
+  <title> activity 4.3 </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
+  <style>
+  
+      .card
+      {
+          margin: 25px;
+      }
+      
+      h3
+      {
+          margin: 25px;
+      }
+      
+  </style>  
+    
+ 
 </head>
 
 <body>
-
-  <script> 
-      var url =  "https://data.cityofchicago.org/resource/xzkq-xp2w.json?$LIMIT=5";
+   
+  <div id="templet" class="card templet" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+    
+  <h3>Activity 4.3</h3>
+    
+  <script>  
+      let url = "https://data.cityofchicago.org/resource/xzkq-xp2w.json?$LIMIT=100";
+      var temp = document.getElementById("templet")      
+      
       
       fetch(url)
       .then(response => {return response.json()})
-      .then(json => {for(let item of json){
-          let p = document.createElement('p');
-          p.textContent = item.name;
-          document.body.appendChild(p);
+      .then(json => {for (let item of json)
+      {
+          // clone templet and append it
+          let myClone = temp.cloneNode(true);
+          
+          // remove "templet" class from clone
+          myClone.classList.remove("templet");
+          
+          // append name to card
+          let cardTitle = myClone.querySelector(".card-title")
+          cardTitle.innerHTML = item.name;
+          
+          
+          // appending department to card
+          let cardSubTitle = myClone.querySelector(".card-subtitle")
+          cardSubTitle.innerHTML = item.department;
+          
+          
+          // appending salary to card
+          let cardText = myClone.querySelector(".card-text")
+          cardText.innerHTML = item.annual_salary;
+          
+          // appending clone to body element.
+          document.body.appendChild(myClone);              
+          
       }})
-      .catch(error => alert(error))
-      
-  </script>
+      .catch(err => alert(err))         
+  </script>  
+    
+    
 </body>
 
 </html>
