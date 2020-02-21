@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Canvas Demo</title></head>
+	<body>
+        <canvas id="canvasDemo" width="1200" height="600" style="border:1px solid #000000;">
+             This will be displayed if your browser doesn't
+             support the canvas element. The closing tag is
+             necessary.
+        </canvas>
+        
+		<script>
+		
+		var C = document.getElementById("canvasDemo")
+		var Context = C.getContext("2d");
+	    Context.fillStyle = "#FFFF00";
+		Context.fillRect(0, 0, 1200, 600);
+		
+	    // function for letter "i"
+	    function myLetter()
+		{
+			Context.lineWidth = 10;	
+			Context.strokeStyle = "	#8B008B";
+			
+			// using rectangle property to make letter "i"
+			Context.rect(500,50,200,30);
+			Context.rect(500,100,30,100);
+            Context.rect(500,220,200,30);
+            Context.rect(670,270,30,100);
+            Context.rect(500,390,200,30);
+		}
+		
+	    // function call for letter "s"
+		myLetter();
+			
+	    Context.stroke(); 
+		
+		Context.font = "30px Arial";
+	    Context.fillStyle = "red";
+	    Context.fillText("669855152", 1000, 550);	
+			
+		</script>
+    </body>
+</html>
