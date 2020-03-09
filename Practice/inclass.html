@@ -1,0 +1,27 @@
+<!-- Simple circle draw -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    
+  </head>
+  <body>
+    <canvas id="c1"></canvas>
+
+
+  <script>
+    let c = document.querySelector("#c1");
+
+    let ctx = c.getContext("2d");
+
+    ctx.arc(100,100,50,0, Math.PI*2)
+
+    ctx.fill();
+  </script>
+
+
+  </body>
+</html>
